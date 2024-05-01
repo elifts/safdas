@@ -36,6 +36,7 @@ function startGame() {
   const randomTechnique = getRandomTechnique();
   document.getElementById("description").innerText = randomTechnique.description;
   document.getElementById("message").innerText = "";
+  document.body.style.backgroundColor = "rgb(25, 25, 25)";
 }
 
 // Function to check the user's guess
@@ -44,8 +45,10 @@ function checkGuess() {
   const currentTechniqueName = document.getElementById("description").innerText.split(":")[0];
   if (userGuess === currentTechniqueName.toLowerCase()) {
     document.getElementById("message").innerText = "Correct! You guessed it right!";
+    document.body.style.backgroundColor = "green"; // Change background color to green if correct
   } else {
     document.getElementById("message").innerText = "Sorry, you lost! The correct answer was: " + currentTechniqueName;
+    document.body.style.backgroundColor = "red"; // Change background color to red if incorrect
   }
   setTimeout(startGame, 2000); // Repeat the game after 2 seconds
 }
