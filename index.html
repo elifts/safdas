@@ -35,7 +35,7 @@ function getRandomTechnique() {
 function startGame() {
   const randomTechnique = getRandomTechnique();
   const userGuess = prompt(`What language technique is described as: ${randomTechnique.description}`);
-  document.getElementById("descripred").innerText = ${randomTechnique.description}
+  document.getElementById("descripred").innerText = ${randomTechnique.description};
   
   if (userGuess && userGuess.toLowerCase() === randomTechnique.name.toLowerCase()) {
     document.getElementById("message").innerText = "Correct! You guessed it right!";
