@@ -3,21 +3,41 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>test</title>
-
+<title>Language Technique Guessing Game</title>
 </head>
-<body style="background-color: rgb(25, 25, 25);">
+<body style="background-color: rgb(25, 25, 25); color: white; font-family: Arial, sans-serif; text-align: center;">
+<h1>Language Technique Guessing Game</h1>
+<p id="message"></p>
 <script>
-  con = true;
-  function run(){
-    alert("hi");
-    while(con){
-    hi = prompt("in")
-    con = confirm("done?")
-    }
-  }
-run();
-</script>
+// Define an array of language techniques and their descriptions
+const techniques = [
+  { name: "Metaphor", description: "A figure of speech that makes an implicit, implied, or hidden comparison between two things that are unrelated." },
+  { name: "Simile", description: "A figure of speech that makes a comparison, showing similarities between two different things using 'like' or 'as'." },
+  { name: "Alliteration", description: "The repetition of the same initial letter or sound in closely connected words." },
+  // Add more techniques and descriptions as needed
+];
 
+// Function to pick a random technique from the array
+function getRandomTechnique() {
+  return techniques[Math.floor(Math.random() * techniques.length)];
+}
+
+// Function to start the game
+function startGame() {
+  const randomTechnique = getRandomTechnique();
+  const userGuess = prompt(`What language technique is described as: ${randomTechnique.description}`);
+  
+  if (userGuess && userGuess.toLowerCase() === randomTechnique.name.toLowerCase()) {
+    document.getElementById("message").innerText = "Correct! You guessed it right!";
+  } else {
+    document.getElementById("message").innerText = "Sorry, you lost! The correct answer was: " + randomTechnique.name;
+  }
+  
+  setTimeout(startGame, 2000); // Repeat the game after 2 seconds
+}
+
+// Start the game
+startGame();
+</script>
 </body>
 </html>
