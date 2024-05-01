@@ -42,7 +42,7 @@ function startGame() {
 // Function to check the user's guess
 function checkGuess() {
   const userGuess = document.getElementById("guess").value.toLowerCase();
-  const currentTechniqueName = document.getElementById("description").innerText.split(":")[0];
+  const currentTechniqueName = document.getElementById("name").innerText.split(":")[0];
   if (userGuess === currentTechniqueName.toLowerCase()) {
     document.getElementById("message").innerText = "Correct! You guessed it right!";
     document.body.style.backgroundColor = "green"; // Change background color to green if correct
