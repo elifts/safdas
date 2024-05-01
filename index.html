@@ -7,9 +7,11 @@
 </head>
 <body style="background-color: rgb(25, 25, 25); color: white; font-family: Arial, sans-serif; text-align: center;">
 <h1>Language Technique Guessing Game</h1>
-<label for="fname" id="descripred"></label>
-<label for="fname">word:</label>
-<input type="text" id="fname" name="fname"><br><br>
+<label for="description">Description:</label>
+<p id="description"></p>
+<label for="guess">Your Guess:</label>
+<input type="text" id="guess" name="guess"><br><br>
+<button onclick="checkGuess()">Check Guess</button>
 <p id="message"></p>
 <script>
 // Define an array of language techniques and their descriptions
@@ -22,8 +24,6 @@ const techniques = [
   { name: "Personification", description: "Giving human attributes to non-human entities or objects." },
   { name: "Oxymoron", description: "A figure of speech in which contradictory terms appear in conjunction." },
   { name: "Pun", description: "A play on words that exploits multiple meanings or similar-sounding words." }
-
-  
 ];
 
 // Function to pick a random technique from the array
@@ -34,19 +34,23 @@ function getRandomTechnique() {
 // Function to start the game
 function startGame() {
   const randomTechnique = getRandomTechnique();
-  const userGuess = prompt(`What language technique is described as: ${randomTechnique.description}`);
-  document.getElementById("descripred").innerText = ${randomTechnique.description};
-  
-  if (userGuess && userGuess.toLowerCase() === randomTechnique.name.toLowerCase()) {
+  document.getElementById("description").innerText = randomTechnique.description;
+  document.getElementById("message").innerText = "";
+}
+
+// Function to check the user's guess
+function checkGuess() {
+  const userGuess = document.getElementById("guess").value.toLowerCase();
+  const currentTechniqueName = document.getElementById("description").innerText.split(":")[0];
+  if (userGuess === currentTechniqueName.toLowerCase()) {
     document.getElementById("message").innerText = "Correct! You guessed it right!";
   } else {
-    document.getElementById("message").innerText = "Sorry, you lost! The correct answer was: " + randomTechnique.name;
+    document.getElementById("message").innerText = "Sorry, you lost! The correct answer was: " + currentTechniqueName;
   }
-  
   setTimeout(startGame, 2000); // Repeat the game after 2 seconds
 }
 
-// Start the game
+// Start the game initially
 startGame();
 </script>
 </body>
