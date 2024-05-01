@@ -7,6 +7,9 @@
 </head>
 <body style="background-color: rgb(25, 25, 25); color: white; font-family: Arial, sans-serif; text-align: center;">
 <h1>Language Technique Guessing Game</h1>
+<label for="fname" id="descripred"></label>
+<label for="fname">word:</label>
+<input type="text" id="fname" name="fname"><br><br>
 <p id="message"></p>
 <script>
 // Define an array of language techniques and their descriptions
@@ -32,6 +35,7 @@ function getRandomTechnique() {
 function startGame() {
   const randomTechnique = getRandomTechnique();
   const userGuess = prompt(`What language technique is described as: ${randomTechnique.description}`);
+  document.getElementById("descripred").innerText = ${randomTechnique.description}
   
   if (userGuess && userGuess.toLowerCase() === randomTechnique.name.toLowerCase()) {
     document.getElementById("message").innerText = "Correct! You guessed it right!";
